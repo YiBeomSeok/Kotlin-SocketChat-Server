@@ -20,6 +20,9 @@ class SocketServer : Serializable {
     fun connect(port: Int) {
         println("server connect start!! port : $port")
         serverSocket = ServerSocket(port)
+        println("ip : ${serverSocket.inetAddress}")
+        println("lsa = ${serverSocket.localSocketAddress}")
+
         clientSocket = serverSocket.accept()
         inputStream = clientSocket.getInputStream()
         outputStream = clientSocket.getOutputStream()
@@ -53,10 +56,11 @@ fun main() {
     while (true) {
         try {
             if (socketServer.isClose()) {
-                socketServer.connect(8081)
+                socketServer.connect(8082)
             } else {
                 socketServer.connectClose()
             }
+
             var isRead = false
             println("First isRead : $isRead")
             while (isRead.not()) {
