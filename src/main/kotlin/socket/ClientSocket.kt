@@ -51,6 +51,8 @@ class ClientSocket(
     }
 
     fun close() {
+        inputStream.close()
+        outputStream.close()
         acceptedSocket.close()
     }
 
