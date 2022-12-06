@@ -1,7 +1,15 @@
-import socket.Server
+import socket.ChatServer
+import socket.FileServer
+import kotlin.concurrent.thread
 
 fun main() {
-    val server = Server()
-    println("accept 시작")
-    server.startAccept()
+    val chatServer = ChatServer()
+    val fileServer = FileServer()
+
+    thread {
+        chatServer.startAccept()
+    }
+    thread {
+        fileServer.startAccept()
+    }
 }

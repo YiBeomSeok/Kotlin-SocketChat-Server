@@ -5,7 +5,7 @@ import java.net.ServerSocket
 import java.net.SocketException
 import kotlin.concurrent.thread
 
-class Server : Serializable {
+class ChatServer : Serializable {
     private lateinit var serverSocket: ServerSocket
     private val clientSockets = mutableListOf<ClientSocket>()
 
